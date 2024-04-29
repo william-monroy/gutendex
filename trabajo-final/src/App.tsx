@@ -1,7 +1,9 @@
+import { Header } from "./components/Header";
+
 export const App: React.FC = () => {
   return (
     <>
-      {/* <Header /> */}
+      <Header />
       <main className="px-responsive">
         <h1>App</h1>
         <p>
