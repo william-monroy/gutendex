@@ -1,3 +1,4 @@
+import React from "react";
 import {
   Link,
   Navbar,
@@ -8,9 +9,9 @@ import {
   NavbarMenuItem,
   NavbarMenuToggle,
 } from "@nextui-org/react";
-import { ThemeSwitch } from "./ThemeSwitch";
 import { useEffect, useState } from "react";
 import { useTheme } from "next-themes";
+import { ThemeSwitch } from "./ThemeSwitch";
 
 export const Header: React.FC = () => {
   const menuItems = ["Inicio", "Acerca de", "API", "Catálogo"];

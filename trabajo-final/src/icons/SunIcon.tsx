@@ -1,3 +1,5 @@
+import React from "react";
+
 interface SunIconProps {
   props?: React.SVGProps<SVGSVGElement>;
 }

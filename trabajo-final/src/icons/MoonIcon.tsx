@@ -1,3 +1,5 @@
+import React from "react";
+
 interface MoonIconProps {
   props?: React.SVGProps<SVGSVGElement>;
 }

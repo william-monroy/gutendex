@@ -1,11 +1,11 @@
-import { MoonIcon } from "@/icons/MoonIcon";
-import { SunIcon } from "@/icons/SunIcon";
 import {
   // Switch,
   useSwitch,
   VisuallyHidden,
   SwitchProps,
 } from "@nextui-org/react";
+import { SunIcon } from "@/icons/SunIcon";
+import { MoonIcon } from "@/icons/MoonIcon";
 // TODO: Report issue docs: Switch is not used
 
 export const ThemeSwitch = (props: SwitchProps) => {
@@ -37,9 +37,6 @@ export const ThemeSwitch = (props: SwitchProps) => {
           {isSelected ? <SunIcon /> : <MoonIcon />}
         </div>
       </Component>
-      {/* <p className="text-default-500 select-none">
-        Lights: {isSelected ? "on" : "off"}
-      </p> */}
     </div>
   );
 };
