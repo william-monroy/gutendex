@@ -2,6 +2,8 @@ import { Header } from "./components/Header";
 
 import { Footer } from "./components/Footer";
 
+import { Contacto } from "./components/Contacto";
+
 export const App: React.FC = () => {
   return (
     <>
@@ -23,6 +25,7 @@ export const App: React.FC = () => {
         {/* <Features /> */}
         {/* <Customers /> */}
         {/* <Integrations /> */}
+        <Contacto />
       </main>
       <Footer />
     </>
