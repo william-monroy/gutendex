@@ -21,7 +21,7 @@ export default {
             primary: {
               //... 50 to 900
               // foreground: "#FFFFFF",
-              DEFAULT: "#4F3B99",
+              DEFAULT: "#645CD9",
             },
             // ... rest of the colors
           },
@@ -33,7 +33,7 @@ export default {
             primary: {
               //... 50 to 900
               // foreground: "#FFFFFF",
-              DEFAULT: "#4F3B99",
+              DEFAULT: "#938FF6",
             },
           },
         },
