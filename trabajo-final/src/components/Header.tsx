@@ -14,7 +14,7 @@ import { useTheme } from "next-themes";
 import { ThemeSwitch } from "./ThemeSwitch";
 
 export const Header: React.FC = () => {
-  const menuItems = ["Inicio", "Acerca de", "API", "Catálogo"];
+  const menuItems = ["Inicio", "Catálogo", "Acerca de", "API"];
 
   const [mounted, setMounted] = useState(false);
   const [isSelected, setIsSelected] = useState(true);
@@ -65,6 +65,11 @@ export const Header: React.FC = () => {
           </Link>
         </NavbarItem>
         <NavbarItem>
+          <Link color="foreground" href="#">
+            Catálogo
+          </Link>
+        </NavbarItem>
+        <NavbarItem>
           <Link color="foreground" href="#" aria-current="page">
             Acerca de
           </Link>
@@ -72,11 +77,6 @@ export const Header: React.FC = () => {
         <NavbarItem>
           <Link color="foreground" href="#">
             API
-          </Link>
-        </NavbarItem>
-        <NavbarItem>
-          <Link color="foreground" href="#">
-            Catálogo
           </Link>
         </NavbarItem>
         <NavbarItem>
@@ -99,13 +99,8 @@ export const Header: React.FC = () => {
           <NavbarMenuItem key={`${item}-${index}`}>
             <Link
               className="w-full"
-              color={
-                index === 2
-                  ? "warning"
-                  : index === menuItems.length - 1
-                  ? "primary"
-                  : "foreground"
-              }
+              // color={index === menuItems.length - 1 ? "primary" : "foreground"}
+              color={"foreground"}
               href="#"
               size="lg"
             >
