@@ -1,5 +1,7 @@
 import { Header } from "./components/Header";
 
+import { Footer } from "./components/Footer";
+
 export const App: React.FC = () => {
   return (
     <>
@@ -22,7 +24,7 @@ export const App: React.FC = () => {
         {/* <Customers /> */}
         {/* <Integrations /> */}
       </main>
-      {/* <Footer /> */}
+      <Footer />
     </>
   );
 };
