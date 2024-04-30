@@ -8,7 +8,7 @@ export const App: React.FC = () => {
   return (
     <>
       <Header />
-      <main className="px-responsive">
+      <main>
         <h1>App</h1>
         <p>
           Lorem, ipsum dolor sit amet consectetur adipisicing elit. Perferendis
