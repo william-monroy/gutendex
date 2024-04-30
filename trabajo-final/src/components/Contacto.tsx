@@ -17,7 +17,7 @@ export const Contacto: React.FC = () => {
         </p>
 
         <div className="flex justify-center m-8">
-          <div className="flex flex-col items-center w-1/2 gap-4">
+          <div className="flex flex-col items-center w-full sm:w-1/2 gap-4">
             <Input
               type="text"
               label="Nombre"
