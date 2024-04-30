@@ -2,11 +2,14 @@ import { Header } from "./components/Header";
 
 import { Footer } from "./components/Footer";
 
+import { Hero } from "./components/Hero";
+
 export const App: React.FC = () => {
   return (
     <>
       <Header />
-      <main className="px-responsive">
+      <main>
+        <Hero />
         <h1>App</h1>
         <p>
           Lorem, ipsum dolor sit amet consectetur adipisicing elit. Perferendis
