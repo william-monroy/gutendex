@@ -1,20 +1,32 @@
-import { Card, CardBody, CardFooter } from "@nextui-org/react";
-import { Avatar } from "@nextui-org/react";
+import { Avatar, Card, CardBody, CardHeader } from "@nextui-org/react";
+import { cls } from "@/utils/Tailwind";
 
-export const Icono: React.FC = (props) => {
+interface IconoProps {
+  src: string;
+  heading: string;
+  paragraph?: string;
+  className?: string | boolean | undefined;
+}
+
+export const Icono: React.FC<IconoProps> = (props: IconoProps) => {
   return (
-    <div className="flex justify-center items-center">
-      <Card isHoverable className="w-[200px] p-4 rounded-2xl">
-        <CardBody className="items-center">
-          <Avatar src={props.src} className="w-20 h-20 text-large" />
-        </CardBody>
-        <CardFooter className="text-center">
-          <div>
-            <h1 className="font-bold text-2xl">{props.heading}</h1>
-            <p>{props.paragraph}</p>
-          </div>
-        </CardFooter>
-      </Card>
-    </div>
+    <Card
+      isHoverable
+      className={cls(
+        "w-[240px] p-2 rounded-2xl",
+        props.paragraph ? "h-auto" : "w-[auto] p-6",
+        props.className
+      )}
+    >
+      <CardHeader className="flex justify-center">
+        <Avatar src={props.src} className="w-20 h-20 text-large" />
+      </CardHeader>
+      <CardBody className="text-center">
+        <h4 className="font-bold text-xl">{props.heading}</h4>
+        {props.paragraph && (
+          <p className={"text-md txt-p-color"}>{props.paragraph}</p>
+        )}
+      </CardBody>
+    </Card>
   );
 };
