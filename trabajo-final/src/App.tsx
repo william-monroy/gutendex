@@ -2,11 +2,13 @@ import { Header } from "./components/Header";
 
 import { Footer } from "./components/Footer";
 
+import { Contacto } from "./components/Contacto";
+
 export const App: React.FC = () => {
   return (
     <>
       <Header />
-      <main className="px-responsive">
+      <main>
         <h1>App</h1>
         <p>
           Lorem, ipsum dolor sit amet consectetur adipisicing elit. Perferendis
@@ -23,6 +25,7 @@ export const App: React.FC = () => {
         {/* <Features /> */}
         {/* <Customers /> */}
         {/* <Integrations /> */}
+        <Contacto />
       </main>
       <Footer />
     </>
