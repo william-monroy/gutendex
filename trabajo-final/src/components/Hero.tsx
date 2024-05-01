@@ -5,12 +5,17 @@ import { SearchIcon } from "../icons/SearchIcon";
 
 export const Hero: React.FC = () => {
   return (
-    <section>
+    <section
+      style={{
+        height: "calc(100vh - 64px)",
+      }}
+      className="flex flex-col justify-center"
+    >
       <div className="px-responsive">
-        <h1 className="text-8xl font-bold text-center">
+        <h2 className="text-6xl font-bold text-center text-balance">
           Lorem ipsum dolor sit amet, consect
-        </h1>
-        <p className="text-3xl text-gray-500 text-center mt-4">
+        </h2>
+        <p className="text-lg txt-p-color text-center mt-4">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque
           posuere nunc nec velit porta bibendum. Phasellus vehicula faucibus
         </p>
@@ -19,7 +24,7 @@ export const Hero: React.FC = () => {
             Start your travel
           </Button>
         </div>
-        <div className="flex justify-center mt-4">
+        <div className="flex justify-center mt-6">
           <div className="w-4/5">
             <Input
               label="Buscar libro"
