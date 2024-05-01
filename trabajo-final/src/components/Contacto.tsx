@@ -6,7 +6,7 @@ import { SendIcon } from "@/icons/SendIcon";
 
 export const Contacto: React.FC = () => {
   return (
-    <section className="bg-[#EAEAF7] dark:bg-[#202235]">
+    <section className="bg-[#EAEAF7] dark:bg-[#1E1E1E]">
       <div className="px-responsive">
         <h1 className="text-4xl font-bold">Contáctanos</h1>
         <p className="text-[#4D4C4D] dark:text-[#C6C6C6]">
