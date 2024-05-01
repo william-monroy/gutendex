@@ -11,4 +11,8 @@
     padding-left: calc(0.75rem + 0.5vw);
     padding-right: calc(0.75rem + 0.5vw);
   }
+
+  .txt-p-color {
+    color: light-dark(#4d4c4d, #c6c6c6);
+  }
 }
