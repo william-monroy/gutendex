@@ -1,19 +1,14 @@
-import { Contacto } from "@/components/Contacto";
-import { Features } from "@/components/Features";
-import { Footer } from "@/components/Footer";
-import { Header } from "@/components/Header";
+import { MainLayout } from "@/layouts/MainLayout";
 import { Hero } from "@/components/Hero";
+import { Features } from "@/components/Features";
+import { Contacto } from "@/components/Contacto";
 
 export const Home: React.FC = () => {
   return (
-    <>
-      <Header />
-      <main>
-        <Hero />
-        <Features />
-        <Contacto />
-      </main>
-      <Footer />
-    </>
+    <MainLayout>
+      <Hero />
+      <Features />
+      <Contacto />
+    </MainLayout>
   );
 };
