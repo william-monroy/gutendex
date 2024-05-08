@@ -22,8 +22,7 @@ export const Header: React.FC = () => {
   ];
 
   const [mounted, setMounted] = useState(false);
-  const [isSelected, setIsSelected] = useState(true);
-  const { setTheme } = useTheme();
+  const { setTheme, theme, systemTheme } = useTheme();
   const location = useLocation();
 
   useEffect(() => {
@@ -78,10 +77,15 @@ export const Header: React.FC = () => {
         ))}
         <NavbarItem>
           <ThemeSwitch
-            isSelected={isSelected}
+            isSelected={
+              theme === "system" ? systemTheme !== "dark" : theme !== "dark"
+            }
             onClick={() => {
-              setIsSelected(!isSelected);
-              setTheme(isSelected ? "dark" : "light");
+              if (theme === "system") {
+                setTheme(systemTheme === "dark" ? "light" : "dark");
+              } else {
+                setTheme(theme === "dark" ? "light" : "dark");
+              }
             }}
           />
         </NavbarItem>

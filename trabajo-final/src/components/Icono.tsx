@@ -22,7 +22,7 @@ export const Icono: React.FC<IconoProps> = (props: IconoProps) => {
         <Avatar src={props.src} className="w-20 h-20 text-large" />
       </CardHeader>
       <CardBody className="text-center">
-        <h4 className="font-bold text-xl">{props.heading}</h4>
+        <h3 className="font-bold text-xl">{props.heading}</h3>
         {props.paragraph && (
           <p className={"text-md txt-p-color"}>{props.paragraph}</p>
         )}
