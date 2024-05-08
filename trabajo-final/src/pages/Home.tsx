@@ -7,7 +7,12 @@ import { Formato } from "@/components/Formato";
 export const Home: React.FC = () => {
   return (
     <MainLayout>
-      <Hero />
+      <Hero
+        title="Lorem ipsum dolor sit amet, consectetur"
+        subtitle="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque posuere nunc nec velit porta bibendum. Phasellus vehicula faucibus"
+        button={true}
+        input={true}
+      />
       <Features />
       <Formato />
       <Contacto />
