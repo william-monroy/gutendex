@@ -22,7 +22,7 @@ export const About: React.FC = () => {
         customResponsive
         childrenStyles="flex flex-row justify-center"
       > */}
-      <Section>
+      <Section isDark>
         <h3 className="font-bold text-4xl mb-4 text-center md:text-left">
           Nuestro Equipo
         </h3>
