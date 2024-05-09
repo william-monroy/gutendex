@@ -1,9 +1,5 @@
-import React from "react";
-import { Input } from "@nextui-org/react";
-import { Textarea } from "@nextui-org/react";
-import { Button } from "@nextui-org/react";
-import { SendIcon } from "@/icons/SendIcon";
 import { Section } from "@/layouts/Section";
+import ContactForm from "./ContactForm";
 
 export const Contacto: React.FC = () => {
   return (
@@ -17,35 +13,7 @@ export const Contacto: React.FC = () => {
       </p>
 
       <div className="flex justify-center mx-8 mt-8">
-        <div className="flex flex-col items-center w-full sm:w-1/2 gap-4">
-          <Input
-            type="text"
-            label="Nombre"
-            placeholder="Introduce tu nombre"
-            variant="bordered"
-          />
-          <Input
-            type="text"
-            label="Apellidos"
-            placeholder="Introduce tus apellidos"
-            variant="bordered"
-          />
-          <Input
-            type="email"
-            label="Email"
-            placeholder="Introduce tu email"
-            errorMessage="Por favor, introduce una dirección de correo válida."
-            variant="bordered"
-          />
-          <Textarea
-            label="Mensaje"
-            placeholder="Ingrese su mensaje aquí"
-            variant="bordered"
-          />
-          <Button color="primary" endContent={<SendIcon />}>
-            Enviar
-          </Button>
-        </div>
+        <ContactForm />
       </div>
     </Section>
   );
