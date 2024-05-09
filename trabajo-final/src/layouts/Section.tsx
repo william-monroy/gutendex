@@ -3,13 +3,15 @@ import { cls } from "@/utils/Tailwind";
 interface SectionProps {
   children: React.ReactNode | React.ReactNode[];
   isDark?: boolean;
-  className?: string | boolean | undefined;
+  customResponsive?: boolean;
+  childrenStyles?: string;
 }
 
 export const Section: React.FC<SectionProps> = ({
   children,
-  className,
   isDark = false,
+  customResponsive = false,
+  childrenStyles = "",
 }: SectionProps) => (
   <section
     style={{
@@ -17,10 +19,11 @@ export const Section: React.FC<SectionProps> = ({
     }}
     className={cls(
       "flex flex-col justify-center",
-      isDark && "bg-[#EAEAF7] dark:bg-[#1E1E1E]",
-      className
+      isDark && "bg-[#EAEAF7] dark:bg-[#1E1E1E]"
     )}
   >
-    <div className="px-responsive">{children}</div>
+    <div className={cls(!customResponsive ? "px-responsive" : childrenStyles)}>
+      {children}
+    </div>
   </section>
 );
