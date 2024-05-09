@@ -16,7 +16,7 @@ export const Equipo: Array<Equipo> = [
     name: "Santiago Ayechu",
     role: "Role",
     src: "https://i.postimg.cc/G2MrzdvB/Satiago-Ayechu.png",
-    href: "https://wimodev.com",
+    href: "https://www.linkedin.com/in/santiago-ayechu-garriz/",
   },
   {
     name: "Joaquin Orradre",
