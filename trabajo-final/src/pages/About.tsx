@@ -1,38 +1,28 @@
+import { Equipo } from "@/data/Equipo";
 import { MainLayout } from "@/layouts/MainLayout";
 import { MiembroEquipo } from "@components/MiembroEquipo";
+import { Link } from "react-router-dom";
 
 export const About: React.FC = () => {
   return (
     <MainLayout>
       <div className="px-responsive flex flex-row flex-wrap justify-center">
-        <MiembroEquipo
-          src="https://media.discordapp.net/attachments/702600003998449805/1237297382585274388/william-animoji.png?ex=663b227b&is=6639d0fb&hm=44036546caf7c001ac1fd837d652a410633aa40df8f0df349de7fab22263691f&=&format=webp&quality=lossless&width=448&height=372"
-          width={250}
-          name="William Monroy"
-          role="Role"
-          className="m-1 max-w-44"
-        />
-        <MiembroEquipo
-          src="https://media.discordapp.net/attachments/702600003998449805/1237297382585274388/william-animoji.png?ex=663b227b&is=6639d0fb&hm=44036546caf7c001ac1fd837d652a410633aa40df8f0df349de7fab22263691f&=&format=webp&quality=lossless&width=448&height=372"
-          width={250}
-          name="William Monroy"
-          role="Role"
-          className="m-1 max-w-44"
-        />
-        <MiembroEquipo
-          src="https://media.discordapp.net/attachments/702600003998449805/1237297382585274388/william-animoji.png?ex=663b227b&is=6639d0fb&hm=44036546caf7c001ac1fd837d652a410633aa40df8f0df349de7fab22263691f&=&format=webp&quality=lossless&width=448&height=372"
-          width={250}
-          name="William Monroy"
-          role="Role"
-          className="m-1 max-w-44"
-        />
-        <MiembroEquipo
-          src="https://media.discordapp.net/attachments/702600003998449805/1237297382585274388/william-animoji.png?ex=663b227b&is=6639d0fb&hm=44036546caf7c001ac1fd837d652a410633aa40df8f0df349de7fab22263691f&=&format=webp&quality=lossless&width=448&height=372"
-          width={250}
-          name="William Monroy"
-          role="Role"
-          className="m-1 max-w-44"
-        />
+        {Equipo.map((miembro, index) => (
+          <Link
+            to={miembro.href}
+            target="_blank"
+            key={index}
+            className="m-1 max-w-44"
+          >
+            <MiembroEquipo
+              src={miembro.src}
+              width={250}
+              name={miembro.name}
+              role={miembro.role}
+              className="m-1 max-w-44"
+            />
+          </Link>
+        ))}
       </div>
     </MainLayout>
   );

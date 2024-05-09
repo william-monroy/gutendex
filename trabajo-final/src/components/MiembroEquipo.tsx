@@ -5,7 +5,7 @@ interface MiembroEquipoProps {
   src: string;
   name: string;
   role: string;
-  width: string;
+  width: string | number;
   className?: string | boolean | undefined;
 }
 
@@ -14,7 +14,7 @@ export const MiembroEquipo: React.FC<MiembroEquipoProps> = (
 ) => {
   const combinedClassName = `py-4 ${props.className || ""}`;
   return (
-    <Card className={combinedClassName}>
+    <Card className={combinedClassName} isHoverable isPressable>
       <CardHeader className="overflow-visible py-2">
         <Image
           className="object-cover rounded-xl"
@@ -25,8 +25,12 @@ export const MiembroEquipo: React.FC<MiembroEquipoProps> = (
         />
       </CardHeader>
       <CardBody className="pb-0 pt-2 px-4 flex-col items-start">
-        <h4 className="font-bold text-large">{props.name}</h4>
-        <small className="text-default-500">{props.role}</small>
+        <h4 className="font-bold text-large text-balance text-center">
+          {props.name}
+        </h4>
+        <small className="text-default-500 text-center w-full">
+          {props.role}
+        </small>
       </CardBody>
     </Card>
   );
