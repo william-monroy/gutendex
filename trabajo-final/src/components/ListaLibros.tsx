@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Axios, { AxiosResponse } from "axios";
 import { Libro } from "@/components/Libro";
+import { Link } from "react-router-dom";
 
 interface Book {
   id: number;
@@ -29,17 +30,19 @@ function ListaLibros() {
   return (
     <div className="grid grid-cols-4 gap-4">
       {libros.map((libro) => (
-        <Libro
-          key={libro.id}
-          src={libro.formats["image/jpeg"]}
-          titulo={libro.title}
-          autor={libro.authors
-            .map((author) => {
-              const nameParts = author.name.split(",");
-              return `${nameParts.slice(1).join("")} ${nameParts[0]}`;
-            })
-            .join(", ")}
-        />
+        <Link to={`/catalog/${libro.id}`}>
+          <Libro
+            key={libro.id}
+            src={libro.formats["image/jpeg"]}
+            titulo={libro.title}
+            autor={libro.authors
+              .map((author) => {
+                const nameParts = author.name.split(",");
+                return `${nameParts.slice(1).join("")} ${nameParts[0]}`;
+              })
+              .join(", ")}
+          />
+        </Link>
       ))}
     </div>
   );
