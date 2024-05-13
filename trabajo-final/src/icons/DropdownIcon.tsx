@@ -14,9 +14,9 @@ export const DropdownIcon = (props: DropdownIconProps) => (
   >
     <path
       d="M4.5 6.5L8.78571 10.5L13.0714 6.5"
-      stroke="#11181C"
-      stroke-linecap="round"
-      stroke-linejoin="round"
+      stroke={props.props?.stroke || "#11181C"}
+      strokeLinecap="round"
+      strokeLinejoin="round"
     />
   </svg>
 );

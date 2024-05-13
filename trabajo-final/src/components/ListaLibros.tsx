@@ -1,7 +1,9 @@
-import React, { useEffect, useState } from "react";
-import Axios, { AxiosResponse } from "axios";
+import { Link, useNavigate } from "react-router-dom";
+import { Pagination } from "@nextui-org/react";
 import { Libro } from "@/components/Libro";
-import { Link } from "react-router-dom";
+import LibroLoading from "./LibroLoading";
+import useBooks from "@/hooks/useBooks";
+import { useQueryParam } from "@/hooks/useQueryParam";
 
 interface Book {
   id: number;
@@ -13,26 +15,35 @@ interface Book {
 }
 
 function ListaLibros() {
-  const [libros, setLibros] = useState<Book[]>([]);
+  const query = useQueryParam();
 
-  useEffect(() => {
-    console.log("Montado componente ListaLibros");
-    Axios.get("https://gutendex.com/books")
-      .then((response: AxiosResponse<{ results: Book[] }>) => {
-        console.log("Respuesta de la API:", response.data);
-        setLibros(response.data.results);
-      })
-      .catch((error) => {
-        console.error("Error al obtener los libros:", error);
-      });
-  }, []);
+  const { data, isLoading, isError } = useBooks(
+    query.get("page") ? parseInt(query.get("page") || "1") : 1
+  );
+
+  const navigate = useNavigate();
+
+  if (isLoading)
+    return (
+      <div className="flex flex-wrap justify-center gap-4">
+        {Array.from({ length: 8 }).map((_, index) => (
+          <LibroLoading key={index} />
+        ))}
+      </div>
+    );
+
+  if (isError)
+    return (
+      <div className="flex justify-center items-center h-72">
+        <p className="text-center">Error al cargar los libros</p>
+      </div>
+    );
 
   return (
-    <div className="grid grid-cols-4 gap-4">
-      {libros.map((libro) => (
-        <Link to={`/catalog/${libro.id}`}>
+    <div className="flex flex-wrap justify-center gap-4">
+      {data?.results?.map((libro: Book) => (
+        <Link to={`/catalog/${libro.id}`} key={libro.id}>
           <Libro
-            key={libro.id}
             src={libro.formats["image/jpeg"]}
             titulo={libro.title}
             autor={libro.authors
@@ -44,6 +55,19 @@ function ListaLibros() {
           />
         </Link>
       ))}
+      {data?.results?.length > 0 && (
+        <Pagination
+          isCompact
+          showControls
+          total={Math.ceil(data?.count / 32)}
+          initialPage={
+            query.get("page") ? parseInt(query.get("page") || "1") : 1
+          }
+          onChange={(page) => {
+            navigate(`/catalog?page=${page}`);
+          }}
+        />
+      )}
     </div>
   );
 }

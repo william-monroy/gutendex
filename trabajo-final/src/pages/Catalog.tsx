@@ -1,5 +1,4 @@
 import { MainLayout } from "@/layouts/MainLayout";
-import { Link } from "react-router-dom";
 import { Outlet } from "react-router-dom";
 import { Filtros } from "@/components/Filtros";
 import ListaLibros from "@/components/ListaLibros";
@@ -12,7 +11,6 @@ export const Catalog: React.FC = () => {
           Catálogo de Libros
         </h1>
         <Filtros />
-        <Link to="/catalog/1">Book 1</Link>
         <Outlet />
         <ListaLibros />
       </section>

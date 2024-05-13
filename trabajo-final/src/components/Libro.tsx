@@ -1,5 +1,4 @@
-import React from "react";
-import { Card, CardHeader, CardBody, Image } from "@nextui-org/react";
+import { Card, CardHeader, CardBody, Image, Tooltip } from "@nextui-org/react";
 
 interface LibroProps {
   src: string;
@@ -9,21 +8,29 @@ interface LibroProps {
 }
 
 export const Libro: React.FC<LibroProps> = (props: LibroProps) => {
-  const combinedClassName = `py-4 ${props.className || ""}`;
+  const combinedClassName = `flex max-w-[224px] ${props.className || ""}`;
   return (
-    <Card className={combinedClassName}>
-      <CardHeader className="overflow-visible py-2">
-        <Image
-          className="object-cover rounded-xl"
-          src={props.src}
-          alt="Card background"
-          isZoomed
-        />
-      </CardHeader>
-      <CardBody className="pb-0 pt-2 px-4 flex-col items-start">
-        <h4 className="font-bold text-large">{props.titulo}</h4>
-        <small className="text-default-500">{props.autor}</small>
-      </CardBody>
-    </Card>
+    <Tooltip content={props.titulo} color="primary" placement="top">
+      <Card className={combinedClassName}>
+        <CardHeader>
+          <Image
+            className="object-cover rounded-xl w-[200px] h-[300px] shadow-lg"
+            src={props.src}
+            alt={props.titulo}
+            isZoomed
+            width={200}
+            height={300}
+          />
+        </CardHeader>
+        <CardBody className="pb-2 pt-2 px-4 flex-col items-start">
+          <h4 className="font-bold text-large max-h-[84px]">
+            {props.titulo.length > 50
+              ? `${props.titulo.slice(0, 50)}...`
+              : props.titulo}
+          </h4>
+          <small className="text-default-500">{props.autor}</small>
+        </CardBody>
+      </Card>
+    </Tooltip>
   );
 };
