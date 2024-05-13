@@ -1,69 +1,71 @@
 .container {
-    display: flex;
-    justify-content: center;
-    width: 100%;
-  }
-  
-  .left-column, .middle-column, .right-column {
-    flex: 1;
-    padding: 20px;
-  }
-  
-  .left-column {
-    background-color: #D3D2EB;
-    flex: 1; 
-    flex-basis: calc(1/3 * 100%); 
-  }
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
 
-  .left-column h2 {
-    text-align: center;
-    font-weight: bold;
-    font-size: 1.5rem;
-  }
+.left-column,
+.middle-column,
+.right-column {
+  /* flex: 1; */
+  padding: 20px;
+}
 
-  .left-column button {
-    color: #777; 
-    padding: 8px 12px; 
-    display: block;
-  }
-  
-  .middle-column {
-    flex: 2; 
-    flex-basis: calc(2/3 * 100%); 
-    padding: 0px 5px;
-  }
+.left-column {
+  background-color: #d3d2eb;
+  /* flex: 1; */
+  /* flex-basis: calc(1 / 3 * 100%); */
+}
 
-  .middle-column div{
-    margin: 5px 0px;
-  }
+.left-column h2 {
+  text-align: center;
+  font-weight: bold;
+  font-size: 1.5rem;
+}
 
-  .middle-column div:first-child{
-    margin: 0px 0px;
-  }
+.left-column button {
+  color: #777;
+  padding: 8px 12px;
+  display: block;
+}
 
-  .middle-column div:last-child{
-    margin: 0px 0px;
-  }
+.middle-column {
+  /* flex: 2; */
+  /* flex-basis: calc(2 / 3 * 100%); */
+  padding: 0px 5px;
+}
 
-  .middle-column div h3{
-    font-weight: bold;
-    font-size: 1rem;
-    padding-bottom: 10px;
-  }
+.middle-column div {
+  margin: 5px 0px;
+}
 
-  .right-column {
-    flex: 1; 
-    flex-basis: calc(1/2 * 100%); 
-    background-color: #4F3B99;
-    overflow: auto; 
-  }
-  
-  .button {
-    display: block;
-    margin-bottom: 10px;
-    cursor: pointer;
-  }
+.middle-column div:first-child {
+  margin: 0px 0px;
+}
 
-  .middle-column div{
-    padding: 20px;
-  }
+.middle-column div:last-child {
+  margin: 0px 0px;
+}
+
+.middle-column div h3 {
+  font-weight: bold;
+  font-size: 1rem;
+  padding-bottom: 10px;
+}
+
+.right-column {
+  /* flex: 1; */
+  /* flex-basis: calc(1 / 2 * 100%); */
+  background-color: #4f3b99;
+  /* overflow: auto; */
+}
+
+.button {
+  display: block;
+  margin-bottom: 10px;
+  cursor: pointer;
+}
+
+.middle-column div {
+  padding: 20px;
+}
