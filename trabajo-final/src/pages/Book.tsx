@@ -39,24 +39,46 @@ export const Book: React.FC = () => {
   }, [bookId]);
 
   return (
-    <Modal isOpen={true} onOpenChange={onOpenChange} onClose={onClose}>
+    <Modal
+      isOpen={true}
+      onOpenChange={onOpenChange}
+      onClose={onClose}
+      size="4xl"
+    >
       <ModalContent>
         {bookInfo && (
           <>
             <ModalHeader className="flex flex-col gap-1">
               {bookInfo.title}
             </ModalHeader>
-            <ModalBody>
-              <p>Autor: {bookInfo.authors[0].name}</p>
-              <p>Temas: {bookInfo.subjects.join(", ")}</p>
-              <p>Librerías: {bookInfo.bookshelves.join(", ")}</p>
-              <p>Idiomas: {bookInfo.languages.join(", ")}</p>
-              <p>Número de descargas: {bookInfo.download_count}</p>
+            <ModalBody className="flex flex-wrap flex-row gap-10">
               <img
                 src={bookInfo.formats["image/jpeg"]}
                 alt={bookInfo.title}
                 style={{ maxWidth: "186px", maxHeight: "270px" }}
-              />{" "}
+              />
+              <div>
+                <p>
+                  <span className="font-bold">Autor:</span>{" "}
+                  {bookInfo.authors[0].name}
+                </p>
+                <p>
+                  <span className="font-bold">Temas:</span>{" "}
+                  {bookInfo.subjects.join(", ")}
+                </p>
+                <p>
+                  <span className="font-bold">Librerías:</span>{" "}
+                  {bookInfo.bookshelves.join(", ")}
+                </p>
+                <p>
+                  <span className="font-bold">Idiomas:</span>{" "}
+                  {bookInfo.languages.join(", ")}
+                </p>
+                <p>
+                  <span className="font-bold">Número de descargas:</span>{" "}
+                  {bookInfo.download_count}
+                </p>{" "}
+              </div>
             </ModalBody>
             <ModalFooter>
               <Button color="danger" variant="light" onPress={onClose}>
