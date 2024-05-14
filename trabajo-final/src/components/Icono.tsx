@@ -13,7 +13,7 @@ export const Icono: React.FC<IconoProps> = (props: IconoProps) => {
     <Card
       isHoverable
       className={cls(
-        "w-[240px] p-2 rounded-2xl h-[232px]",
+        "w-[240px] p-2 rounded-2xl h-[232px] min-w-[240px]",
         props.paragraph ? "h-auto" : "w-[auto] p-6",
         props.className
       )}
