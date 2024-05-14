@@ -3,7 +3,7 @@ import "../utils/style.css";
 import React, { useState, useEffect } from "react";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { vscDarkPlus } from "react-syntax-highlighter/dist/esm/styles/prism";
-import { Button, ButtonGroup } from "@nextui-org/button";
+import { Button } from "@nextui-org/button";
 
 export const API: React.FC = () => {
   useEffect(() => {
@@ -18,13 +18,15 @@ export const API: React.FC = () => {
       const middleColumnItem = item as HTMLElement;
       middleColumnItem.style.borderRadius = "10px";
       if (item.id === buttonId) {
-        middleColumnItem.style.backgroundColor = "var(--primary-color)";
+        middleColumnItem.style.backgroundColor =
+          "var(--primary-color-not-selected)";
         middleColumnItem.scrollIntoView({
           behavior: "smooth",
           block: "center",
         });
       } else {
-        middleColumnItem.style.backgroundColor = "white";
+        middleColumnItem.style.backgroundColor =
+          "var(--secondary-color-selected)";
       }
     });
   };
@@ -279,4 +281,3 @@ export const API: React.FC = () => {
     </MainLayout>
   );
 };
-
