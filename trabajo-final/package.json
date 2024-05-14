@@ -13,6 +13,8 @@
   "dependencies": {
     "@formspree/react": "^2.5.1",
     "@nextui-org/react": "^2.3.6",
+    "@tanstack/react-query": "^5.36.0",
+    "axios": "^1.6.8",
     "framer-motion": "^11.1.7",
     "next-themes": "^0.3.0",
     "react": "^18.2.0",

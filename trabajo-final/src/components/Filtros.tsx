@@ -1,4 +1,3 @@
-import React from "react";
 import {
   Dropdown,
   DropdownTrigger,
@@ -9,13 +8,15 @@ import {
 } from "@nextui-org/react";
 import { DropdownIcon } from "@/icons/DropdownIcon";
 import { SearchIcon } from "@/icons/SearchIcon";
+import { useMemo, useState } from "react";
 
 export const Filtros: React.FC = () => {
-  const [selectedKeys, setSelectedKeys] = React.useState(
+  const [selectedKeys, setSelectedKeys] = useState(
     new Set(["Selecciona un filtro"])
   );
+  const [searchText, setSearchText] = useState("");
 
-  const selectedValue = React.useMemo(
+  const selectedValue = useMemo(
     () =>
       Array.from(selectedKeys)
         .join(", ")
@@ -25,7 +26,7 @@ export const Filtros: React.FC = () => {
   );
   return (
     <>
-      <div className="flex justify-center items-center flex-wrap gap-4">
+      <div className="flex justify-center items-center flex-wrap gap-4 mb-8">
         <h3 className="font-bold">Buscar por:</h3>
         <Dropdown>
           <DropdownTrigger>
@@ -40,7 +41,7 @@ export const Filtros: React.FC = () => {
             disallowEmptySelection
             selectionMode="multiple"
             selectedKeys={selectedKeys}
-            onSelectionChange={setSelectedKeys}
+            onSelectionChange={(keys) => setSelectedKeys(keys as Set<string>)}
           >
             <DropdownItem key="new">New file</DropdownItem>
             <DropdownItem key="copy">Copy link</DropdownItem>
@@ -57,9 +58,15 @@ export const Filtros: React.FC = () => {
           variant="bordered"
           placeholder="Introduce el término de búsqueda"
           className="max-w-xs"
+          value={searchText}
+          onChange={(e) => setSearchText(e.target.value)}
         />
 
-        <Button color="primary" startContent={<SearchIcon />}>
+        <Button
+          color="primary"
+          startContent={<SearchIcon />}
+          isDisabled={!searchText}
+        >
           Buscar
         </Button>
       </div>
