@@ -3,6 +3,7 @@ import { Button } from "@nextui-org/react";
 import { Input } from "@nextui-org/react";
 import { SearchIcon } from "../icons/SearchIcon";
 import { Section } from "@/layouts/Section";
+import { Link } from "react-router-dom";
 
 interface HeroProps {
   title: string;
@@ -20,9 +21,11 @@ export const Hero: React.FC<HeroProps> = (props: HeroProps) => {
       <p className="text-lg txt-p-color text-center mt-4">{props.subtitle}</p>
       {props.button && (
         <div className="flex justify-center mt-4">
-          <Button radius="sm" color="primary">
-            Start your travel
-          </Button>
+          <Link to="/catalog">
+            <Button radius="sm" color="primary">
+              Explorar aquí
+            </Button>
+          </Link>
         </div>
       )}
       {props.input && (

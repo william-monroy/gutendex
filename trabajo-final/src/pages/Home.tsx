@@ -8,8 +8,8 @@ export const Home: React.FC = () => {
   return (
     <MainLayout>
       <Hero
-        title="Lorem ipsum dolor sit amet, consectetur"
-        subtitle="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque posuere nunc nec velit porta bibendum. Phasellus vehicula faucibus"
+        title="Descubre tu nuevo libro favorito"
+        subtitle={`¿No sabes qué leer? Te encuentras en el lugar adecuado. Desde Shakespeare hasta Charles Dickens, explora nuestro variado catálogo`}
         button={true}
         input={true}
       />

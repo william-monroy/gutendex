@@ -53,14 +53,14 @@ export const Header: React.FC = () => {
       <NavbarContent className="sm:hidden pr-3" justify="start">
         <NavbarBrand>
           {/* <AcmeLogo /> */}
-          <p className="font-bold text-inherit">ACME</p>
+          <p className="font-bold text-inherit">BOOKSHELF</p>
         </NavbarBrand>
       </NavbarContent>
 
       <NavbarContent className="hidden sm:flex gap-4" justify="end">
         <NavbarBrand>
           {/* <AcmeLogo /> */}
-          <p className="font-bold text-inherit">ACME</p>
+          <p className="font-bold text-inherit">BOOKSHELF</p>
         </NavbarBrand>
         {menuItems.map((item, index) => (
           <NavbarItem key={index} isActive={location.pathname === item.path}>
