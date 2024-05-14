@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Button } from "@nextui-org/react";
 import { Input } from "@nextui-org/react";
 import { SearchIcon } from "../icons/SearchIcon";
@@ -13,6 +13,8 @@ interface HeroProps {
 }
 
 export const Hero: React.FC<HeroProps> = (props: HeroProps) => {
+  const [searchText, setSearchText] = useState("");
+
   const navigate = useNavigate();
   return (
     <Section>
@@ -32,7 +34,14 @@ export const Hero: React.FC<HeroProps> = (props: HeroProps) => {
         </div>
       )}
       {props.input && (
-        <div className="flex justify-center mt-6">
+        <div
+          className="flex justify-center mt-6"
+          onKeyUp={(e) => {
+            if (e.key === "Enter" && searchText.length > 0) {
+              navigate(`/catalog?search=${searchText}`);
+            }
+          }}
+        >
           <div className="w-4/5">
             <Input
               label="Buscar libro"
@@ -64,6 +73,8 @@ export const Hero: React.FC<HeroProps> = (props: HeroProps) => {
               startContent={
                 <SearchIcon className="text-black/50 mb-0.5 dark:text-white/90 text-slate-400 pointer-events-none flex-shrink-0" />
               }
+              value={searchText}
+              onChange={(e) => setSearchText(e.target.value)}
             />
           </div>
         </div>

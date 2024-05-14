@@ -14,22 +14,17 @@ import {
 } from "@nextui-org/react";
 import { DropdownIcon } from "@/icons/DropdownIcon";
 import { SearchIcon } from "@/icons/SearchIcon";
-import { useMemo, useState } from "react";
-
-interface Book {
-  id: number;
-  title: string;
-  authors: { name: string }[];
-  languages: string[];
-  download_count: number;
-  formats: { [key: string]: string };
-}
+import { useEffect, useMemo, useState } from "react";
+import { Book } from "@/types/Book.type";
 
 function ListaLibros() {
   const query = useQueryParam();
 
   const { data, isLoading, isError } = useBooks(
-    query.get("page") ? parseInt(query.get("page") || "1") : 1
+    query.get("page") ? parseInt(query.get("page") || "1") : 1,
+    query.get("search") ?? "",
+    query.get("languages") ?? "",
+    query.get("topic") ?? ""
   );
 
   const navigate = useNavigate();
@@ -47,6 +42,22 @@ function ListaLibros() {
         .replaceAll("_", " "),
     [selectedKeys]
   );
+
+  useEffect(() => {
+    if (query.get("search")) {
+      setSearchText(query.get("search") || "");
+      setSelectedKeys(new Set(["titulo"]));
+    }
+    if (query.get("languages")) {
+      setSelectedKeys(new Set(["idioma"]));
+      setSearchText(query.get("languages") || "");
+    }
+    if (query.get("topic")) {
+      setSelectedKeys(new Set(["tema"]));
+      setSearchText(query.get("topic") || "");
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   if (isLoading)
     return (
@@ -76,26 +87,36 @@ function ListaLibros() {
           </DropdownTrigger>
           <DropdownMenu
             variant="flat"
-            aria-label="Multiple selection example"
+            aria-label="Filtra por:"
             closeOnSelect={false}
             disallowEmptySelection
             selectionMode="single"
             selectedKeys={selectedKeys}
             onSelectionChange={(keys) => setSelectedKeys(keys as Set<string>)}
+            color="primary"
           >
-            <DropdownItem key="idioma">Idioma</DropdownItem>
-            <DropdownItem key="tema">Tema</DropdownItem>
-            <DropdownItem key="edit">Edit</DropdownItem>
-            <DropdownItem key="delete">Delete file</DropdownItem>
+            <DropdownItem key="titulo" description="Ejm: Romeo and Juliet">
+              Título
+            </DropdownItem>
+            <DropdownItem key="autor" description="Ejm: William Shakespeare">
+              Autor
+            </DropdownItem>
+            <DropdownItem key="idioma" description="Ejm: fr,fi">
+              Idioma
+            </DropdownItem>
+            <DropdownItem key="tema" description="Ejm: Fiction">
+              Tema
+            </DropdownItem>
           </DropdownMenu>
         </Dropdown>
 
         <Input
           isClearable
+          onClear={() => setSearchText("")}
           type="text"
           variant="bordered"
           placeholder="Introduce el término de búsqueda"
-          className="max-w-xs"
+          className="max-w-xs w-auto min-w-[280px]"
           value={searchText}
           onChange={(e) => setSearchText(e.target.value)}
         />
@@ -103,7 +124,21 @@ function ListaLibros() {
         <Button
           color="primary"
           startContent={<SearchIcon />}
-          isDisabled={!searchText}
+          isDisabled={!searchText || selectedValue === "Selecciona un filtro"}
+          onClick={() => {
+            query.delete("topic");
+            query.delete("search");
+            query.delete("languages");
+            const queryParam = Array.from(selectedKeys)[0].replace(" ", "_");
+            if (queryParam === "titulo" || queryParam === "autor") {
+              query.set("search", searchText);
+            } else if (queryParam === "idioma") {
+              query.set("languages", searchText);
+            } else if (queryParam === "tema") {
+              query.set("topic", searchText);
+            }
+            navigate(`/catalog?${query.toString()}`);
+          }}
         >
           Buscar
         </Button>
