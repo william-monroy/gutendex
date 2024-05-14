@@ -22,12 +22,12 @@ export const Equipo: Array<Equipo> = [
     name: "Joaquin Orradre",
     role: "Role",
     src: "joaquin-orradre.webp",
-    href: "https://wimodev.com",
+    href: "https://linkedin.com/in/william-monroy",
   },
   {
     name: "Miguel de la Ossa",
     role: "Role",
     src: "miguel-de-la-ossa.webp",
-    href: "https://wimodev.com",
+    href: "https://www.linkedin.com/in/santiago-ayechu-garriz/",
   },
 ];
