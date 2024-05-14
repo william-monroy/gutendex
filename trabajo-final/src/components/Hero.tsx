@@ -3,7 +3,7 @@ import { Button } from "@nextui-org/react";
 import { Input } from "@nextui-org/react";
 import { SearchIcon } from "../icons/SearchIcon";
 import { Section } from "@/layouts/Section";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 interface HeroProps {
   title: string;
@@ -13,6 +13,7 @@ interface HeroProps {
 }
 
 export const Hero: React.FC<HeroProps> = (props: HeroProps) => {
+  const navigate = useNavigate();
   return (
     <Section>
       <h2 className="text-6xl font-bold text-center text-balance">
@@ -21,11 +22,13 @@ export const Hero: React.FC<HeroProps> = (props: HeroProps) => {
       <p className="text-lg txt-p-color text-center mt-4">{props.subtitle}</p>
       {props.button && (
         <div className="flex justify-center mt-4">
-          <Link to="/catalog">
-            <Button radius="sm" color="primary">
-              Explorar aquí
-            </Button>
-          </Link>
+          <Button
+            radius="sm"
+            color="primary"
+            onPress={() => navigate(`/catalog`)}
+          >
+            Explorar aquí
+          </Button>
         </div>
       )}
       {props.input && (
