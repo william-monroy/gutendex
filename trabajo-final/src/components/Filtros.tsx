@@ -39,7 +39,7 @@ export const Filtros: React.FC = () => {
             aria-label="Multiple selection example"
             closeOnSelect={false}
             disallowEmptySelection
-            selectionMode="multiple"
+            selectionMode="single"
             selectedKeys={selectedKeys}
             onSelectionChange={(keys) => setSelectedKeys(keys as Set<string>)}
           >
