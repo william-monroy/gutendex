@@ -43,12 +43,10 @@ export const Filtros: React.FC = () => {
             selectedKeys={selectedKeys}
             onSelectionChange={(keys) => setSelectedKeys(keys as Set<string>)}
           >
-            <DropdownItem key="new">New file</DropdownItem>
-            <DropdownItem key="copy">Copy link</DropdownItem>
-            <DropdownItem key="edit">Edit file</DropdownItem>
-            <DropdownItem key="delete" className="text-danger" color="danger">
-              Delete file
-            </DropdownItem>
+            <DropdownItem key="idioma">Idioma</DropdownItem>
+            <DropdownItem key="tema">Tema</DropdownItem>
+            <DropdownItem key="edit">Edit</DropdownItem>
+            <DropdownItem key="delete">Delete file</DropdownItem>
           </DropdownMenu>
         </Dropdown>
 
