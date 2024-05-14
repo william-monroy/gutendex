@@ -12,7 +12,7 @@ export const Formato: React.FC = () => {
       </p>
 
       <div
-        className="grid grid-cols-[repeat(auto-fit,minmax(200px,1fr))] justify-center items-center gap-4 mt-8"
+        className="flex flex-row flex-wrap justify-center items-center gap-4 mt-8"
         style={{ gridAutoFlow: "dense" }}
       >
         <Icono src="/HTML.webp" heading="HTML" />
