@@ -18,11 +18,17 @@ export const Section: React.FC<SectionProps> = ({
       minHeight: "calc(100vh - 64px)",
     }}
     className={cls(
-      "flex flex-col justify-center",
+      "flex flex-col justify-center py-10",
       isDark && "bg-[#EAEAF7] dark:bg-[#1E1E1E]"
     )}
   >
-    <div className={cls(!customResponsive ? "px-responsive" : childrenStyles)}>
+    <div
+      className={cls(
+        !customResponsive
+          ? "px-responsive text-center md:text-left"
+          : childrenStyles
+      )}
+    >
       {children}
     </div>
   </section>
