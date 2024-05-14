@@ -61,10 +61,78 @@ function ListaLibros() {
 
   if (isLoading)
     return (
-      <div className="flex flex-wrap justify-center gap-4">
-        {Array.from({ length: 8 }).map((_, index) => (
-          <LibroLoading key={index} />
-        ))}
+      <div>
+        <div className="flex justify-center items-center flex-wrap gap-4 mb-8">
+          <h3 className="font-bold">Buscar por:</h3>
+          <Dropdown>
+            <DropdownTrigger>
+              <Button variant="bordered" endContent={<DropdownIcon />}>
+                {selectedValue || "Selecciona un filtro"}
+              </Button>
+            </DropdownTrigger>
+            <DropdownMenu
+              variant="flat"
+              aria-label="Filtra por:"
+              closeOnSelect={false}
+              disallowEmptySelection
+              selectionMode="single"
+              selectedKeys={selectedKeys}
+              onSelectionChange={(keys) => setSelectedKeys(keys as Set<string>)}
+              color="primary"
+            >
+              <DropdownItem key="titulo" description="Ejm: Romeo and Juliet">
+                Título
+              </DropdownItem>
+              <DropdownItem key="autor" description="Ejm: William Shakespeare">
+                Autor
+              </DropdownItem>
+              <DropdownItem key="idioma" description="Ejm: fr,fi">
+                Idioma
+              </DropdownItem>
+              <DropdownItem key="tema" description="Ejm: Fiction">
+                Tema
+              </DropdownItem>
+            </DropdownMenu>
+          </Dropdown>
+
+          <Input
+            isClearable
+            onClear={() => setSearchText("")}
+            type="text"
+            variant="bordered"
+            placeholder="Introduce el término de búsqueda"
+            className="max-w-xs w-auto min-w-[280px]"
+            value={searchText}
+            onChange={(e) => setSearchText(e.target.value)}
+          />
+
+          <Button
+            color="primary"
+            startContent={<SearchIcon />}
+            isDisabled={!searchText || selectedValue === "Selecciona un filtro"}
+            onClick={() => {
+              query.delete("topic");
+              query.delete("search");
+              query.delete("languages");
+              const queryParam = Array.from(selectedKeys)[0].replace(" ", "_");
+              if (queryParam === "titulo" || queryParam === "autor") {
+                query.set("search", searchText);
+              } else if (queryParam === "idioma") {
+                query.set("languages", searchText);
+              } else if (queryParam === "tema") {
+                query.set("topic", searchText);
+              }
+              navigate(`/catalog?${query.toString()}`);
+            }}
+          >
+            Buscar
+          </Button>
+        </div>
+        <div className="flex flex-wrap justify-center gap-4">
+          {Array.from({ length: 8 }).map((_, index) => (
+            <LibroLoading key={index} />
+          ))}
+        </div>
       </div>
     );
 
