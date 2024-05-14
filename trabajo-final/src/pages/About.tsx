@@ -45,7 +45,7 @@ export const About: React.FC = () => {
                 src={miembro.src}
                 width={250}
                 name={miembro.name}
-                role={miembro.role}
+                /*role={miembro.role}*/
                 className="m-1 max-w-44"
               />
             </Link>
