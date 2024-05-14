@@ -4,7 +4,6 @@ import React, { useState, useEffect } from "react";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { vscDarkPlus } from "react-syntax-highlighter/dist/esm/styles/prism";
 import { Button, ButtonGroup } from "@nextui-org/button";
-import { Image } from "@nextui-org/react";
 
 export const API: React.FC = () => {
   useEffect(() => {
@@ -14,14 +13,18 @@ export const API: React.FC = () => {
 
   const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
     const buttonId = event.currentTarget.id;
-    const divs = document.querySelectorAll(".middle-column__item");
-    divs.forEach((div) => {
-      const divElement = div as HTMLDivElement;
-      divElement.style.borderRadius = "10px";
-      if (div.id === buttonId) {
-        divElement.style.backgroundColor = "var(--primary-color)";
+    const middleColumnItems = document.querySelectorAll(".middle-column__item");
+    middleColumnItems.forEach((item) => {
+      const middleColumnItem = item as HTMLElement;
+      middleColumnItem.style.borderRadius = "10px";
+      if (item.id === buttonId) {
+        middleColumnItem.style.backgroundColor = "var(--primary-color)";
+        middleColumnItem.scrollIntoView({
+          behavior: "smooth",
+          block: "center",
+        });
       } else {
-        divElement.style.backgroundColor = "white";
+        middleColumnItem.style.backgroundColor = "white";
       }
     });
   };
@@ -36,10 +39,10 @@ export const API: React.FC = () => {
       results: [
         {
           id: 6130,
-          title: "The Iliad",
+          title: "La Ilíada",
           authors: [
             {
-              name: "Homer",
+              name: "Homero",
               birth_year: -750,
               death_year: -650,
             },
@@ -52,15 +55,15 @@ export const API: React.FC = () => {
             },
           ],
           subjects: [
-            "Achilles (Mythological character) -- Poetry",
-            "Classical literature",
-            "Epic poetry, Greek -- Translations into English",
-            "Trojan War -- Poetry",
+            "Aquiles (Personaje mitológico) -- Poesía",
+            "Literatura clásica",
+            "Poesía épica, griega -- Traducciones al inglés",
+            "Guerra de Troya -- Poesía",
           ],
-          bookshelves: ["Classical Antiquity"],
-          languages: ["en"],
+          bookshelves: ["Antigüedad Clásica"],
+          languages: ["es"],
           copyright: false,
-          media_type: "Text",
+          media_type: "Texto",
           formats: {
             "text/html": "https://www.gutenberg.org/ebooks/6130.html.images",
             "application/epub+zip":
@@ -84,9 +87,9 @@ export const API: React.FC = () => {
 
   return (
     <MainLayout>
-      <div className="container">
-        <div className="left-column">
-          <h2 className="left-column__title">Books</h2>
+      <section className="container">
+        <aside className="left-column">
+          <h2 className="left-column__title">Libros</h2>
           <div className="left-column__gridContainer">
             <Button
               onClick={handleClick}
@@ -170,8 +173,8 @@ export const API: React.FC = () => {
               topic
             </Button>
           </div>
-        </div>
-        <div className="middle-column">
+        </aside>
+        <main className="middle-column">
           <div id="author_year_start" className="middle-column__item">
             <h3>author_year_start</h3>
             <p>
@@ -264,7 +267,7 @@ export const API: React.FC = () => {
               sucesivamente.
             </p>
           </div>
-        </div>
+        </main>
         <SyntaxHighlighter
           className="right-column"
           language="json"
@@ -272,7 +275,8 @@ export const API: React.FC = () => {
         >
           {JSON.stringify(bookInfo, null, 2)}
         </SyntaxHighlighter>
-      </div>
+      </section>
     </MainLayout>
   );
 };
+
