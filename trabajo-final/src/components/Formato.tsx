@@ -11,19 +11,16 @@ export const Formato: React.FC = () => {
         que ofrecemos.
       </p>
 
-      <div className="flex flex-row flex-wrap justify-center items-center gap-4 mt-8">
-        <Icono src="/images/undraw_contact_us_15o2.svg" heading="HTML" />
-        <Icono src="/images/undraw_contact_us_15o2.svg" heading="EPUB" />
-        <Icono
-          src="/images/undraw_contact_us_15o2.svg"
-          heading="Mobipocket Ebook"
-        />
-        <Icono src="/images/undraw_contact_us_15o2.svg" heading="RDF" />
-        <Icono
-          src="/images/undraw_contact_us_15o2.svg"
-          heading="Octect Stream"
-        />
-        <Icono src="/images/undraw_contact_us_15o2.svg" heading="Solo Texto" />
+      <div
+        className="grid grid-cols-[repeat(auto-fit,minmax(200px,1fr))] justify-center items-center gap-4 mt-8"
+        style={{ gridAutoFlow: "dense" }}
+      >
+        <Icono src="/HTML.webp" heading="HTML" />
+        <Icono src="/EPUB.webp" heading="EPUB" />
+        <Icono src="/mobipocket.webp" heading="Mobipocket Ebook" />
+        <Icono src="/RDF.webp" heading="RDF" />
+        <Icono src="/octet.webp" heading="Octect Stream" />
+        <Icono src="/texto.webp" heading="Solo Texto" />
       </div>
     </Section>
   );

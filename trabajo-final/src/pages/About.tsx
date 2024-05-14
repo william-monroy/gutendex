@@ -20,14 +20,14 @@ export const About: React.FC = () => {
         isDark={true}
         title="Nuestra Misión"
         text="Nuestra misión es fomentar el amor por la lectura proporcionando un acceso fácil y rápido a una amplia gama de libros. Queremos ser el recurso principal para todos los amantes de los libros, ofreciendo una plataforma intuitiva y rica en contenido."
-        image="/library.jpg"
+        image="/library.webp"
       />
       <AboutSection
         isReverse={true}
         isDark={false}
         title="Nuestros Valores"
         text="Valoramos la pasión por el conocimiento, la integridad en nuestras recomendaciones y la dedicación a nuestros usuarios. Creemos en el poder de los libros para transformar vidas y estamos comprometidos con la creación de una comunidad de lectores entusiastas."
-        image="/reading.jpg"
+        image="/reading.webp"
       />
       <Section isDark>
         <h3 className="font-bold text-4xl mb-4 text-center md:text-left">
