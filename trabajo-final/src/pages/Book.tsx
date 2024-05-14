@@ -11,12 +11,15 @@ import {
 } from "@nextui-org/react";
 import { useNavigate, useParams } from "react-router-dom";
 import { DownloadIcon } from "@/components/DownloadIcon";
+import { useQueryParam } from "@/hooks/useQueryParam";
 
 export const Book: React.FC = () => {
   const { bookId } = useParams<{ bookId: string }>();
   const { onOpenChange } = useDisclosure();
   const navigate = useNavigate();
   const [bookInfo, setBookInfo] = useState<any>(null); // Tipo de libro por definir
+
+  const query = useQueryParam();
 
   const urls = [
     "https://i.postimg.cc/htKsnyVT/691952.png",
@@ -29,7 +32,7 @@ export const Book: React.FC = () => {
   ];
 
   const onClose = () => {
-    navigate("/catalog", {
+    navigate(`/catalog?page=${query.get("page") ?? "1"}`, {
       replace: true,
     });
   };

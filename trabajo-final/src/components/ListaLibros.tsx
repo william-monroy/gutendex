@@ -42,7 +42,10 @@ function ListaLibros() {
   return (
     <div className="flex flex-wrap justify-center gap-4">
       {data?.results?.map((libro: Book) => (
-        <Link to={`/catalog/${libro.id}`} key={libro.id}>
+        <Link
+          to={`/catalog/${libro.id}?page=${query.get("page") ?? "1"}`}
+          key={libro.id}
+        >
           <Libro
             src={libro.formats["image/jpeg"]}
             titulo={libro.title}
