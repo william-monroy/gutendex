@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import axios from "axios";
 import {
   Button,
@@ -12,12 +12,13 @@ import {
 import { useNavigate, useParams } from "react-router-dom";
 import { DownloadIcon } from "@/components/DownloadIcon";
 import { useQueryParam } from "@/hooks/useQueryParam";
+import { type Book as BookType } from "@/types/Book.type";
 
 export const Book: React.FC = () => {
   const { bookId } = useParams<{ bookId: string }>();
   const { onOpenChange } = useDisclosure();
   const navigate = useNavigate();
-  const [bookInfo, setBookInfo] = useState<any>(null); // Tipo de libro por definir
+  const [bookInfo, setBookInfo] = useState<BookType>();
 
   const query = useQueryParam();
 
@@ -58,6 +59,8 @@ export const Book: React.FC = () => {
       onOpenChange={onOpenChange}
       onClose={onClose}
       size="4xl"
+      placement="auto"
+      scrollBehavior="inside"
     >
       <ModalContent>
         {bookInfo && (
@@ -96,13 +99,11 @@ export const Book: React.FC = () => {
               <p className="font-bold mr-2 text-left">Formatos:</p>
               <div className="flex flex-row items-center justify-center">
                 <ul className="flex flex-wrap gap-2">
-                  {Object.entries(bookInfo.formats).map(
-                    ([format, url], index) => (
-                      <li key={format}>
-                        <DownloadIcon title={format} src={urls[index]} />
-                      </li>
-                    )
-                  )}
+                  {Object.entries(bookInfo.formats).map(([format], index) => (
+                    <li key={format}>
+                      <DownloadIcon title={format} src={urls[index]} />
+                    </li>
+                  ))}
                 </ul>
               </div>
             </ModalBody>
