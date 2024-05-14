@@ -99,11 +99,17 @@ export const Book: React.FC = () => {
               <p className="font-bold mr-2 text-left">Formatos:</p>
               <div className="flex flex-row items-center justify-center">
                 <ul className="flex flex-wrap gap-2">
-                  {Object.entries(bookInfo.formats).map(([format], index) => (
-                    <li key={format}>
-                      <DownloadIcon title={format} src={urls[index]} />
-                    </li>
-                  ))}
+                  {Object.entries(bookInfo.formats).map(
+                    ([format, url], index) => (
+                      <li key={format}>
+                        <DownloadIcon
+                          title={format}
+                          src={urls[index]}
+                          download={url}
+                        />
+                      </li>
+                    )
+                  )}
                 </ul>
               </div>
             </ModalBody>

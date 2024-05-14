@@ -12,17 +12,17 @@ export const Features: React.FC = () => {
 
       <div className="flex justify-center items-center flex-wrap gap-4 mt-8">
         <Icono
-          src="/images/undraw_contact_us_15o2.svg"
+          src="/autor.webp"
           heading="Autores"
           paragraph="Explora libros escritos por tus autores favoritos."
         />
         <Icono
-          src="/images/undraw_contact_us_15o2.svg"
+          src="/idioma.webp"
           heading="Idioma"
           paragraph="Encuentra libros en tu idioma preferido."
         />
         <Icono
-          src="/images/undraw_contact_us_15o2.svg"
+          src="/categoria.webp"
           heading="Categoría"
           paragraph="Explora libros por género y temas específicos."
         />

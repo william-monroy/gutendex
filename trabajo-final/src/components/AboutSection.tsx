@@ -22,7 +22,7 @@ export const AboutSection: React.FC<AboutSectionProps> = ({
     <Section isDark={isDark}>
       <div
         className={cls(
-          "flex flex-wrap gap-8 items-center",
+          "flex flex-wrap gap-8 items-center justify-center",
           isReverse && "flex-row-reverse"
         )}
       >
@@ -35,7 +35,7 @@ export const AboutSection: React.FC<AboutSectionProps> = ({
         <div
           className={cls(
             "flex flex-col max-w-[400px]",
-            isReverse && "text-right"
+            isReverse && "text-center md:text-right"
           )}
         >
           <h3 className="font-bold text-3xl">{title}</h3>

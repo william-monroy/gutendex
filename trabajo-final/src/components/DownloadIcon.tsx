@@ -4,11 +4,16 @@ import { Card, CardFooter, Button, Image } from "@nextui-org/react";
 interface DownloadIconProps {
   title: string;
   src: string;
+  download: string;
 }
 
 export const DownloadIcon: React.FC<DownloadIconProps> = (
   props: DownloadIconProps
 ) => {
+  const handleDownload = () => {
+    window.open(props.download, "_blank");
+  };
+
   return (
     <Card isFooterBlurred radius="lg" className="border-none">
       <Image
@@ -24,6 +29,7 @@ export const DownloadIcon: React.FC<DownloadIconProps> = (
           color="default"
           radius="lg"
           size="sm"
+          onClick={handleDownload}
         >
           Descargar
         </Button>
