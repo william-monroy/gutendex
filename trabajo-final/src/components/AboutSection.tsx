@@ -6,11 +6,17 @@ import { cls } from "@/utils/Tailwind";
 interface AboutSectionProps {
   isReverse?: boolean;
   isDark?: boolean;
+  title: string;
+  text: string;
+  image: string;
 }
 
 export const AboutSection: React.FC<AboutSectionProps> = ({
   isReverse = false,
   isDark = false,
+  title,
+  text,
+  image,
 }: AboutSectionProps) => {
   return (
     <Section isDark={isDark}>
@@ -24,7 +30,7 @@ export const AboutSection: React.FC<AboutSectionProps> = ({
           isZoomed
           width={240}
           alt="NextUI Fruit Image with Zoom"
-          src="https://nextui-docs-v2.vercel.app/images/fruit-1.jpeg"
+          src={image}
         />
         <div
           className={cls(
@@ -32,12 +38,8 @@ export const AboutSection: React.FC<AboutSectionProps> = ({
             isReverse && "text-right"
           )}
         >
-          <h3 className="font-bold text-3xl">Lorem ipsum dolor</h3>
-          <p className="text-lg txt-p-color mt-4">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-            Pellentesque posuere nunc nec velit porta bibendum. Phasellus
-            vehicula faucibus
-          </p>
+          <h3 className="font-bold text-3xl">{title}</h3>
+          <p className="text-lg txt-p-color mt-4">{text}</p>
         </div>
       </div>
     </Section>
