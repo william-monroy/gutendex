@@ -28,7 +28,11 @@ export const Libro: React.FC<LibroProps> = (props: LibroProps) => {
               ? `${props.titulo.slice(0, 50)}...`
               : props.titulo}
           </h4>
-          <small className="text-default-500">{props.autor}</small>
+          <small className="text-default-500">
+            {props.autor.length > 30
+              ? `${props.autor.slice(0, 30)}...`
+              : props.autor}
+          </small>
         </CardBody>
       </Card>
     </Tooltip>
