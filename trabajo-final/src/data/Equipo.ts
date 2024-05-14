@@ -9,25 +9,25 @@ export const Equipo: Array<Equipo> = [
   {
     name: "William Frank Monroy",
     role: "Role",
-    src: "https://i.postimg.cc/sDSVBmqR/wimodev-memoji.png",
+    src: "william-monroy.webp",
     href: "https://linkedin.com/in/william-monroy",
   },
   {
     name: "Santiago Ayechu",
     role: "Role",
-    src: "https://i.postimg.cc/G2MrzdvB/Satiago-Ayechu.png",
+    src: "santiago-ayechu.webp",
     href: "https://www.linkedin.com/in/santiago-ayechu-garriz/",
   },
   {
     name: "Joaquin Orradre",
     role: "Role",
-    src: "https://i.postimg.cc/sDSVBmqR/wimodev-memoji.png",
+    src: "joaquin-orradre.webp",
     href: "https://wimodev.com",
   },
   {
     name: "Miguel de la Ossa",
     role: "Role",
-    src: "https://i.postimg.cc/sDSVBmqR/wimodev-memoji.png",
+    src: "miguel-de-la-ossa.webp",
     href: "https://wimodev.com",
   },
 ];

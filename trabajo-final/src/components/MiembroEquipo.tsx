@@ -18,8 +18,8 @@ export const MiembroEquipo: React.FC<MiembroEquipoProps> = (
       <CardHeader className="overflow-visible py-2">
         <Image
           className="object-cover rounded-xl"
-          src={props.src}
-          alt="Card background"
+          src={`assets/${props.src}`}
+          alt={props.name}
           width={props.width}
           isZoomed
         />
