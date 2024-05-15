@@ -239,6 +239,8 @@ function ListaLibros() {
             }
             onChange={(page) => {
               navigate(`/catalog?page=${page}`);
+              //reset scrool to top
+              window.scrollTo(0, 0);
             }}
           />
         )}
