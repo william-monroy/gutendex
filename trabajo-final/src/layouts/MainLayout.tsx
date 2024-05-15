@@ -1,3 +1,4 @@
+import ButtonUp from "@/components/ButtonUp";
 import { Footer } from "@/components/Footer";
 import { Header } from "@/components/Header";
 
@@ -13,6 +14,7 @@ export const MainLayout: React.FC<MainLayoutProps> = ({
       <Header />
       <main>{children}</main>
       <Footer />
+      <ButtonUp />
     </>
   );
 };
