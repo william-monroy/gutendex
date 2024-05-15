@@ -13,7 +13,7 @@ export const Icono: React.FC<IconoProps> = (props: IconoProps) => {
     <Card
       isHoverable
       className={cls(
-        "w-[240px] p-2 rounded-2xl",
+        "w-[240px] p-2 rounded-2xl h-[232px] min-w-[240px]",
         props.paragraph ? "h-auto" : "w-[auto] p-6",
         props.className
       )}
@@ -22,7 +22,7 @@ export const Icono: React.FC<IconoProps> = (props: IconoProps) => {
         <Avatar src={props.src} className="w-20 h-20 text-large" />
       </CardHeader>
       <CardBody className="text-center">
-        <h4 className="font-bold text-xl">{props.heading}</h4>
+        <h3 className="font-bold text-xl">{props.heading}</h3>
         {props.paragraph && (
           <p className={"text-md txt-p-color"}>{props.paragraph}</p>
         )}

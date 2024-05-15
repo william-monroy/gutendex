@@ -1,6 +1,5 @@
 import React from "react";
 import {
-  Link,
   Navbar,
   NavbarBrand,
   NavbarContent,
@@ -12,13 +11,19 @@ import {
 import { useEffect, useState } from "react";
 import { useTheme } from "next-themes";
 import { ThemeSwitch } from "./ThemeSwitch";
+import { NavLink, useLocation } from "react-router-dom";
 
 export const Header: React.FC = () => {
-  const menuItems = ["Inicio", "Catálogo", "Acerca de", "API"];
+  const menuItems = [
+    { name: "Inicio", path: "/" },
+    { name: "Catálogo", path: "/catalog" },
+    { name: "Acerca de", path: "/about" },
+    { name: "API", path: "/api" },
+  ];
 
   const [mounted, setMounted] = useState(false);
-  const [isSelected, setIsSelected] = useState(true);
-  const { setTheme } = useTheme();
+  const { setTheme, theme, systemTheme } = useTheme();
+  const location = useLocation();
 
   useEffect(() => {
     setMounted(true);
@@ -44,47 +49,43 @@ export const Header: React.FC = () => {
           "data-[active=true]:after:bg-primary",
         ],
       }}
-      // disableAnimation
-      // isBordered
     >
       <NavbarContent className="sm:hidden pr-3" justify="start">
         <NavbarBrand>
           {/* <AcmeLogo /> */}
-          <p className="font-bold text-inherit">ACME</p>
+          <p className="font-bold text-inherit">BOOKSHELF</p>
         </NavbarBrand>
       </NavbarContent>
 
       <NavbarContent className="hidden sm:flex gap-4" justify="end">
         <NavbarBrand>
           {/* <AcmeLogo /> */}
-          <p className="font-bold text-inherit">ACME</p>
+          <p className="font-bold text-inherit">BOOKSHELF</p>
         </NavbarBrand>
-        <NavbarItem isActive>
-          <Link color="primary" href="#">
-            Inicio
-          </Link>
-        </NavbarItem>
-        <NavbarItem>
-          <Link color="foreground" href="#">
-            Catálogo
-          </Link>
-        </NavbarItem>
-        <NavbarItem>
-          <Link color="foreground" href="#" aria-current="page">
-            Acerca de
-          </Link>
-        </NavbarItem>
-        <NavbarItem>
-          <Link color="foreground" href="#">
-            API
-          </Link>
-        </NavbarItem>
+        {menuItems.map((item, index) => (
+          <NavbarItem key={index} isActive={location.pathname === item.path}>
+            <NavLink
+              className={({ isActive }) => {
+                return isActive ? "text-primary" : "text-foreground";
+              }}
+              color={index === menuItems.length - 1 ? "primary" : "foreground"}
+              to={item.path}
+            >
+              {item.name}
+            </NavLink>
+          </NavbarItem>
+        ))}
         <NavbarItem>
           <ThemeSwitch
-            isSelected={isSelected}
+            isSelected={
+              theme === "system" ? systemTheme !== "dark" : theme !== "dark"
+            }
             onClick={() => {
-              setIsSelected(!isSelected);
-              setTheme(isSelected ? "dark" : "light");
+              if (theme === "system") {
+                setTheme(systemTheme === "dark" ? "light" : "dark");
+              } else {
+                setTheme(theme === "dark" ? "light" : "dark");
+              }
             }}
           />
         </NavbarItem>
@@ -97,15 +98,17 @@ export const Header: React.FC = () => {
       <NavbarMenu>
         {menuItems.map((item, index) => (
           <NavbarMenuItem key={`${item}-${index}`}>
-            <Link
-              className="w-full"
-              // color={index === menuItems.length - 1 ? "primary" : "foreground"}
-              color={"foreground"}
-              href="#"
-              size="lg"
+            <NavLink
+              className={({ isActive }) => {
+                return isActive
+                  ? "text-primary w-full"
+                  : "text-foreground w-full";
+              }}
+              color="foreground"
+              to={item.path}
             >
-              {item}
-            </Link>
+              {item.name}
+            </NavLink>
           </NavbarMenuItem>
         ))}
       </NavbarMenu>

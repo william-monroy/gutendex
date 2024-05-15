@@ -1,27 +1,23 @@
 export const SearchIcon = (props: React.SVGProps<SVGSVGElement>) => (
   <svg
-    aria-hidden="true"
-    fill="none"
-    focusable="false"
-    height="1em"
-    role="presentation"
-    viewBox="0 0 24 24"
+    xmlns="http://www.w3.org/2000/svg"
     width="1em"
-    {...props}
+    height="1em"
+    viewBox="0 0 24 24"
   >
-    <path
-      d="M11.5 21C16.7467 21 21 16.7467 21 11.5C21 6.25329 16.7467 2 11.5 2C6.25329 2 2 6.25329 2 11.5C2 16.7467 6.25329 21 11.5 21Z"
-      stroke="currentColor"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      strokeWidth="2"
-    />
-    <path
-      d="M22 22L20 20"
-      stroke="currentColor"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      strokeWidth="2"
-    />
+    <g fill="none">
+      <path
+        fill={props.fill || "currentColor"}
+        d="M19 11a8 8 0 1 1-16 0a8 8 0 0 1 16 0"
+        opacity="0.16"
+      />
+      <path
+        stroke={props.stroke || "currentColor"}
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        strokeWidth="2"
+        d="m21 21l-4.343-4.343m0 0A8 8 0 1 0 5.343 5.343a8 8 0 0 0 11.314 11.314"
+      />
+    </g>
   </svg>
 );

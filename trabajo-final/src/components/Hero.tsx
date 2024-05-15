@@ -1,30 +1,47 @@
-import React from "react";
+import React, { useState } from "react";
 import { Button } from "@nextui-org/react";
 import { Input } from "@nextui-org/react";
 import { SearchIcon } from "../icons/SearchIcon";
+import { Section } from "@/layouts/Section";
+import { useNavigate } from "react-router-dom";
 
-export const Hero: React.FC = () => {
+interface HeroProps {
+  title: string;
+  subtitle: string;
+  button?: boolean;
+  input?: boolean;
+}
+
+export const Hero: React.FC<HeroProps> = (props: HeroProps) => {
+  const [searchText, setSearchText] = useState("");
+
+  const navigate = useNavigate();
   return (
-    <section
-      style={{
-        height: "calc(100vh - 64px)",
-      }}
-      className="flex flex-col justify-center"
-    >
-      <div className="px-responsive">
-        <h2 className="text-6xl font-bold text-center text-balance">
-          Lorem ipsum dolor sit amet, consect
-        </h2>
-        <p className="text-lg txt-p-color text-center mt-4">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque
-          posuere nunc nec velit porta bibendum. Phasellus vehicula faucibus
-        </p>
+    <Section>
+      <h2 className="text-6xl font-bold text-center text-balance">
+        {props.title}
+      </h2>
+      <p className="text-lg txt-p-color text-center mt-4">{props.subtitle}</p>
+      {props.button && (
         <div className="flex justify-center mt-4">
-          <Button radius="sm" color="primary">
-            Start your travel
+          <Button
+            radius="sm"
+            color="primary"
+            onPress={() => navigate(`/catalog`)}
+          >
+            Explorar aquí
           </Button>
         </div>
-        <div className="flex justify-center mt-6">
+      )}
+      {props.input && (
+        <div
+          className="flex justify-center mt-6"
+          onKeyUp={(e) => {
+            if (e.key === "Enter" && searchText.length > 0) {
+              navigate(`/catalog?search=${searchText}`);
+            }
+          }}
+        >
           <div className="w-4/5">
             <Input
               label="Buscar libro"
@@ -56,10 +73,12 @@ export const Hero: React.FC = () => {
               startContent={
                 <SearchIcon className="text-black/50 mb-0.5 dark:text-white/90 text-slate-400 pointer-events-none flex-shrink-0" />
               }
+              value={searchText}
+              onChange={(e) => setSearchText(e.target.value)}
             />
           </div>
         </div>
-      </div>
-    </section>
+      )}
+    </Section>
   );
 };
