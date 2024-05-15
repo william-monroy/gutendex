@@ -4,6 +4,7 @@ import React, { useState, useEffect } from "react";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { vscDarkPlus } from "react-syntax-highlighter/dist/esm/styles/prism";
 import { Button } from "@nextui-org/button";
+// import { Book } from "@/types/Book.type";
 
 export const API: React.FC = () => {
   useEffect(() => {
@@ -31,7 +32,7 @@ export const API: React.FC = () => {
     });
   };
 
-  const [bookInfo, setBookInfo] = useState<any>(null);
+  const [bookInfo, setBookInfo] = useState<any>();
 
   const handleGetBookInfo = () => {
     const bookData = {
@@ -89,7 +90,7 @@ export const API: React.FC = () => {
 
   return (
     <MainLayout>
-      <section className="container">
+      <section className="container-api">
         <aside className="left-column">
           <h2 className="left-column__title">Libros</h2>
           <div className="left-column__gridContainer">
