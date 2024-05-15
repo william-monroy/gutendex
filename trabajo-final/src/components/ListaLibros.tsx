@@ -59,6 +59,21 @@ function ListaLibros() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
+  const handleSearch = () => {
+    query.delete("topic");
+    query.delete("search");
+    query.delete("languages");
+    const queryParam = Array.from(selectedKeys)[0].replace(" ", "_");
+    if (queryParam === "titulo" || queryParam === "autor") {
+      query.set("search", searchText);
+    } else if (queryParam === "idioma") {
+      query.set("languages", searchText);
+    } else if (queryParam === "tema") {
+      query.set("topic", searchText);
+    }
+    navigate(`/catalog?${query.toString()}`);
+  };
+
   if (isLoading)
     return (
       <div>
@@ -104,6 +119,11 @@ function ListaLibros() {
             className="max-w-xs w-auto min-w-[280px]"
             value={searchText}
             onChange={(e) => setSearchText(e.target.value)}
+            onKeyUp={(e) => {
+              if (e.key === "Enter" && searchText.length > 0 && selectedValue) {
+                handleSearch();
+              }
+            }}
           />
 
           <Button
@@ -187,6 +207,11 @@ function ListaLibros() {
           className="max-w-xs w-auto min-w-[280px]"
           value={searchText}
           onChange={(e) => setSearchText(e.target.value)}
+          onKeyUp={(e) => {
+            if (e.key === "Enter" && searchText.length > 0 && selectedValue) {
+              handleSearch();
+            }
+          }}
         />
 
         <Button
@@ -194,18 +219,7 @@ function ListaLibros() {
           startContent={<SearchIcon />}
           isDisabled={!searchText || selectedValue === "Selecciona un filtro"}
           onClick={() => {
-            query.delete("topic");
-            query.delete("search");
-            query.delete("languages");
-            const queryParam = Array.from(selectedKeys)[0].replace(" ", "_");
-            if (queryParam === "titulo" || queryParam === "autor") {
-              query.set("search", searchText);
-            } else if (queryParam === "idioma") {
-              query.set("languages", searchText);
-            } else if (queryParam === "tema") {
-              query.set("topic", searchText);
-            }
-            navigate(`/catalog?${query.toString()}`);
+            handleSearch();
           }}
         >
           Buscar
